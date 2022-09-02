@@ -1,41 +1,69 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TextComponent from "../src/Components/TextComponent";
 import { Box } from "../src/Components/Box";
 import {
-  Dropdown,
-  Dropdown1,
   Date,
   CheckBox,
   Button,
   Button1,
-  Submit,
   Time,
+  Time1,
   Dropdown0,
   InputBox,
   InputBox1,
-  Dropdown4,
 } from "../src/Components/Dropdown";
-//import Drop from"../src/Components/Drop"
+import Popup from "../src/Components/Popup";
+
+
+import Dropdown from "../src/Components/CustomDropdown";
 
 export const SubEs = () => {
+  const [branch, setBranch] = useState([
+    { name: "select", id: "0" },
+    { name: "B.E", id: "1" },
+    { name: "B.Tech", id: "2" },
+  ]);
+  const [dept, setDept] = useState([
+    { name: "I.T", id: "2" },
+    { name: "C.S.E", id: "1" },
+    { name: "EEE", id: "1" },
+    { name: "ECE", id: "1" },
+    { name: "MECH", id: "1" },
+   
+  ]);
+  const [subcode, setSubcode] = useState([
+    "19QSA011",
+    "19HSM002",
+    "19ASR008",
+    "19CTR105",
+    "19MNS202",
+  ]);
+  const [examtype, setExamType] = useState(["Internal", "Model", "Semester"]);
+  const [selectedDept, setSelectedDept] = useState([
+    { name: "select", id: "0" },
+  ]);
 
-  const [branch,setBranch] = useState(['B.E','B.Tech'])
-  const [dept,setDept] = useState(['I.T','C.S.E','EEE','ECE'])
-  const [subcode,setSubcode]=useState(['19QSA011','19HSM002','19ASR008','19CTR105','19MNS202'])
-  const [examtype,setExamType]=useState(['Internal','Model','Semester'])
+  const onChangeSelectBranch = (data) => {
+    const selectedValue = data.target.value;
+    setSelectedDept(dept.filter((selectDept) => selectDept.id === selectedValue))
+
+    // if (selectedValue === "B.Tech") {
+    //   setSelectedDept(dept.filter((selectDept) => selectDept.id === "2"));
+    // } else {
+    //   setSelectedDept(dept.filter((selectDept) => selectDept.id === "1"));
+    // }
+  };
+
+  const [modalOpen, setModalOpen] = React.useState(false);
+  // const [popup,setPopup] = useState(["", "", ""]);
   return (
     <>
       <Box
         style={{
           margin: "19.74px 122px 56px 122px",
-
           background: "#FBFBFB",
           fontWeight: "700",
-          //   height:"1464px",
-          //   width:"1196px",
-          // padding: "95.05px 122px 56.26px 122px",
           padding: "54.05px 61px 61.26px",
-          //   BorderRadius:"19px"
         }}
       >
         <div
@@ -50,7 +78,6 @@ export const SubEs = () => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            // padding: " 8px 16px",
             gap: "8px",
             width: "344px",
             height: "56px",
@@ -58,15 +85,21 @@ export const SubEs = () => {
         >
           <div>
             <TextComponent label="Branch" />
-            <Dropdown0 style={{width:"344px"}} data={branch}/>
+            <Dropdown0
+              style={{ width: "344px" }}
+              data={branch}
+              onChange={onChangeSelectBranch}
+            />
+
+           
           </div>
           <div>
             <TextComponent label="Department" />
-            <Dropdown0 style={{width:"344px"}} data={dept} />
+            <Dropdown0 style={{ width: "344px" }} data={selectedDept} />
           </div>
           <div>
             <TextComponent label="Semester " />
-            <InputBox1  />
+            <InputBox1 />
             {/* <input type="text" /> */}
           </div>
         </div>
@@ -76,7 +109,7 @@ export const SubEs = () => {
           }}
         >
           <TextComponent label="Exam Type" />
-          <Dropdown0 data={examtype} />
+          <Dropdown0 style={{ width: "1090px" }} data={examtype} />
         </div>
 
         <div
@@ -113,17 +146,13 @@ export const SubEs = () => {
               }}
             >
               <TextComponent label="FN" />
-              {/* <div style={{
-              
-                  opacity:"0.5",
-                  marginLeft:"900px"
-            }}>  <TextComponent label="Set all for FN"/></div> */}
             </div>
           </div>
 
+
           <Time />
           <Time />
-          <Time />
+          <Time1 />
 
           <div
             style={{
@@ -134,7 +163,7 @@ export const SubEs = () => {
           </div>
           <Time />
           <Time />
-          <Time />
+          <Time1 />
           <CheckBox />
           <label
             style={{
@@ -150,7 +179,6 @@ export const SubEs = () => {
             display: "flex",
             flexDirection: "row",
             gap: "21px",
-            // padding: "10px",
             marginTop: "20px",
           }}
         >
@@ -179,10 +207,9 @@ export const SubEs = () => {
               </div>
             </div>
           </div>
-
           <Time />
           <Time />
-          <Time />
+          <Time1 />
           <TextComponent
             style={{
               padding: "15px",
@@ -191,7 +218,7 @@ export const SubEs = () => {
           />
           <Time />
           <Time />
-          <Time />
+          <Time1 />
           <CheckBox />
           <label
             style={{
@@ -243,7 +270,7 @@ export const SubEs = () => {
             }}
           >
             <TextComponent label="Subject1" />
-            <div style={{ marginLeft: "570px",paddingLeft:"22px"}}>
+            <div style={{ marginLeft: "570px", paddingLeft: "22px" }}>
               <TextComponent label="Date" />
             </div>
           </div>
@@ -252,7 +279,6 @@ export const SubEs = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            // padding: " 8px 16px",
             gap: "8px",
             width: "423px",
             height: "56px",
@@ -260,7 +286,7 @@ export const SubEs = () => {
             borderRadius: "5px",
           }}
         >
-          <Dropdown0  data={subcode} />
+          <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
           <Button />
@@ -279,8 +305,9 @@ export const SubEs = () => {
                 marginLeft: "570px",
               }}
             >
-             <div style={{ paddingLeft:"22px" }}>
-              <TextComponent label="Date" /></div>
+              <div style={{ paddingLeft: "22px" }}>
+                <TextComponent label="Date" />
+              </div>
             </div>
           </div>
         </div>
@@ -288,13 +315,12 @@ export const SubEs = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            //padding: " 8px 16px",
             gap: "8px",
             width: "344px",
             height: "56px",
           }}
         >
-         <Dropdown0 data={subcode} />
+          <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
           <Button />
@@ -314,8 +340,9 @@ export const SubEs = () => {
                 marginLeft: "570px",
               }}
             >
-             <div style={{ paddingLeft:"22px" }}>
-              <TextComponent label="Date" /></div>
+              <div style={{ paddingLeft: "22px" }}>
+                <TextComponent label="Date" />
+              </div>
             </div>
           </div>
         </div>
@@ -323,7 +350,6 @@ export const SubEs = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            //padding: " 8px 16px",
             gap: "8px",
             width: "344px",
             height: "56px",
@@ -344,7 +370,7 @@ export const SubEs = () => {
             }}
           >
             <TextComponent label="Subject4" />
-            <div style={{ marginLeft: "570px",paddingLeft:"22px" }}>
+            <div style={{ marginLeft: "570px", paddingLeft: "22px" }}>
               <TextComponent label="Date" />
             </div>
           </div>
@@ -353,13 +379,12 @@ export const SubEs = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            //padding: " 8px 16px",
             gap: "8px",
             width: "344px",
             height: "56px",
           }}
         >
-         <Dropdown0 data={subcode} />
+          <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
           <Button />
@@ -379,10 +404,13 @@ export const SubEs = () => {
                 marginLeft: "570px",
               }}
             >
-             <div style={{
-                  paddingLeft:"22px"
-                }}>
-                <TextComponent label="Date"  /></div>
+              <div
+                style={{
+                  paddingLeft: "22px",
+                }}
+              >
+                <TextComponent label="Date" />
+              </div>
             </div>
           </div>
         </div>
@@ -390,13 +418,12 @@ export const SubEs = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            //padding: " 8px 16px",
             gap: "8px",
             width: "344px",
             height: "56px",
           }}
         >
-        <Dropdown0 data={subcode} />
+          <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
           <Button />
@@ -430,7 +457,7 @@ export const SubEs = () => {
             }}
           >
             <TextComponent label="Lab1" />
-            <div style={{ marginLeft: "600px" ,paddingLeft:"22px"}}>
+            <div style={{ marginLeft: "600px", paddingLeft: "22px" }}>
               <TextComponent label="Date" />
             </div>
           </div>
@@ -446,7 +473,7 @@ export const SubEs = () => {
             marginLeft: "4px",
           }}
         >
-         <Dropdown0 data={subcode} />
+          <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
           <Button />
@@ -467,10 +494,13 @@ export const SubEs = () => {
                 }}
               >
                 {" "}
-                <div style={{
-                  paddingLeft:"22px"
-                }}>
-                <TextComponent label="Date"  /></div>
+                <div
+                  style={{
+                    paddingLeft: "22px",
+                  }}
+                >
+                  <TextComponent label="Date" />
+                </div>
               </div>
             </div>
           </div>
@@ -493,7 +523,8 @@ export const SubEs = () => {
           <Button1 />
         </div>
       </Box>
-      <Submit />
+      <Popup modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      {/* <Submit /> */}
     </>
   );
 };

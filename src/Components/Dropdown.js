@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import TextComponent from "./TextComponent";
-import { useState } from "react";
-
-
 
 export const Dropdown0 = (props) => {
-  const { data } = props;
+  const { data, onChange = () => null } = props;
+  // console.log("data",data)
   return (
     <div>
       <select
@@ -26,50 +24,12 @@ export const Dropdown0 = (props) => {
           height: "56px",
           marginRight: "20px",
           opacity: "0.5",
-          ...props.style
+          ...props.style,
         }}
+        onChange={onChange}
       >
         {data.map((item) => {
-          return <option value="">{item}</option>;
-        })}
-      </select>
-    </div>
-  );
-};
-
-
-
-
-
-
-
-
-export const Dropdown = (props) => {
-  // console.log({ props });
-  const { data } = props;
-  return (
-    <div>
-      <select
-        style={{
-          boxSizing: "border-box",
-          display: "flex",
-          flexDirection: "row",
-          padding: " 8px 16px",
-          gap: "8px",
-          width: "1090px",
-          height: "56px",
-          background: "#FFFFFF",
-          border: "1px solid #E8E8EA",
-          flex: "none",
-          order: "1",
-          flexGrow: "0",
-          borderRadius: "10px",
-          height: "56px",
-          opacity: "0.5",
-        }}
-      >
-         {data.map((item) => {
-          return <option value="">{item}</option>;
+          return <option value={item.id}>{item?.name || item}</option>;
         })}
       </select>
     </div>
@@ -106,77 +66,6 @@ export const InputBox = (props) => {
   );
 };
 
-
-
-export const Dropdown4 = (props) => {
-  return (
-    <div>
-      <select
-        style={{
-          boxSizing: "border-box",
-          display: "flex",
-          flexDirection: "row",
-          padding: " 8px 16px",
-          gap: "30px",
-          width: "344px",
-          height: "56px",
-          background: "#FFFFFF",
-          border: "1px solid #E8E8EA",
-          borderRadius: "5px",
-          order: "1",
-          flexGrow: "0",
-          borderRadius: "5px",
-          height: "56px",
-          marginRight: "20px",
-          opacity: "0.5",
-        }}
-      >
-        {/* <option value="">EEE</option>
-        <option value="">ECE</option>
-        <option value="">CSE</option>
-        <option value="">MECH</option> */}
-
-        {/* {props.options?.map((m) => (
-            <option value={m}>{m}</option>
-          ))} */}
-      </select>
-    </div>
-  );
-};
-
-export const Dropdown1 = (props) => {
-  return (
-    <div>
-      <select
-        style={{
-          boxSizing: "border-box",
-          display: "flex",
-          flexDirection: "row",
-          padding: " 8px 16px",
-          gap: "8px",
-          width: "1090px",
-          height: "56px",
-          background: "#FFFFFF",
-          border: "1px solid #E8E8EA",
-          borderRadius: "5px",
-          order: "1",
-          flexGrow: "0",
-          marginTop: "6px",
-          height: "56px",
-          opacity: "0.5",
-        }}
-      >
-        {/* {props.options?.map((m) => (
-          <option value={m}>{m}</option>
-        ))} */}
-
-        {/* <option>Internal</option>
-        <option>Model</option>
-        <option>Semester</option> */}
-      </select>
-    </div>
-  );
-};
 export const Date = () => {
   return (
     <div>
@@ -192,7 +81,6 @@ export const Date = () => {
           height: "56px",
           borderRadius: "4px",
           opacity: "0.5",
-
 
           //   paddingLeft: "10px",
           //   padding:10
@@ -216,6 +104,36 @@ export const CheckBox = () => {
   );
 };
 export const Button = () => {
+  // console.log(Button);
+  const [isActive, setIsActive] = useState(false);
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+  return (
+    <button
+      style={{
+        boxSizing: "border-box",
+        border: " 1px solid #5375E2",
+        borderRadius: "5px",
+        background: "",
+        marginLeft: "18px",
+        backgroundColor: isActive ? "#5375E2" : "white",
+        color: isActive ? "white" : "",
+      }}
+    >
+      <div
+        style={{
+          padding: "19px",
+          width: "15px",
+        }}
+        onClick={handleClick}
+      >
+        FN
+      </div>
+    </button>
+  );
+};
+export const Button1 = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive((current) => !current);
@@ -224,70 +142,28 @@ export const Button = () => {
     <button
       style={{
         boxSizing: "border-box",
-        left: "0%",
-        right: "0%",
-        top: "0%",
-        bottom: "0%",
+
         border: " 1px solid #5375E2",
         borderRadius: "5px",
-        padding: "19px 22.22px",
-        background: "white",
+        background: "",
         marginLeft: "18px",
+        backgroundColor: isActive ? "#5375E2" : "white",
+        color: isActive ? "white" : "",
       }}
     >
       <div
         style={{
-          backgroundColor: isActive ? "black" : "",
-          color: isActive ? "white" : "",
+          padding: "19px",
+          width: "15px",
         }}
         onClick={handleClick}
-      ></div>
-      FN
-    </button>
-  );
-};
-export const Button1 = () => {
-  return (
-    <button
-      style={{
-        boxSizing: "border-box",
-        left: "0%",
-        right: "0%",
-        top: "0%",
-        bottom: "0%",
-        border: " 1px solid #5375E2",
-        borderRadius: "5px",
-        padding: "19px 22.22px",
-        background: "white",
-        marginLeft: "5px",
-      }}
-    >
-      AN
-    </button>
-  );
-};
-
-export const Submit = () => {
-  return (
-    <div>
-      <button
-        onclick=""
-        style={{
-          width: "174px",
-          height: "40px",
-          left: "1144px",
-          top: " 1703.26px",
-          background: "#5375E2",
-          borderRadius: " 5px",
-
-          margin: "4px 59px 88.56px 1201px",
-        }}
       >
-        Save
-      </button>
-    </div>
+        AN
+      </div>
+    </button>
   );
 };
+
 export const Time = () => {
   return (
     <div>
@@ -310,6 +186,26 @@ export const Time = () => {
           // border-radius: 5px;
         }}
       />
+    </div>
+  );
+};
+
+export const Time1 = () => {
+  return (
+    <div >
+    
+    <select style={{
+      background: "#FFFFFF",
+      border: "1px solid #E5E5E5",
+      width: "68.5px",
+      height: "56px",
+      borderRadius: "5px",
+      opacity: "0.5",
+    }}>
+ 
+ <option value="two">AM</option>
+ <option value="three">PM</option>
+</select>
     </div>
   );
 };
@@ -486,10 +382,6 @@ export const InnerBorder = () => {
       <TextComponent
         label="Not Allocated"
         styleProps={{
-          // width: "96px",
-          // height: "27px",
-          // left: "986px",
-          // top: "385px",
           fontStyle: "normal",
           fontWeight: "700",
           fontSize: "20px",

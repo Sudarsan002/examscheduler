@@ -30,8 +30,8 @@ const Landingpage = () => {
       >
         {" "}
         <Box3 />
-        <Box4 />
-        <Box5 />
+        {/* <Box4 />
+        <Box5 /> */}
       </div>
       <Footer />
     </div>
