@@ -13,6 +13,7 @@ import {
   InputBox1,
 } from "../src/Components/Dropdown";
 import Popup from "../src/Components/Popup";
+import RadioButton from "../src/Components/Session";
 
 export const SubEs = () => {
   const [branch, setBranch] = useState([
@@ -59,14 +60,10 @@ export const SubEs = () => {
 
   const onChangeSelectCode = (data) => {
     const selectedValue = data.target.value;
-
-    // const findValue  = subjectsArray.findIndex(selectedValue)
-    // console.log("findValue",findValue)
     const filter = subjectsArray.filter(
       (item) => item.subcode === selectedValue
     );
     console.log("hello",subjectsArray)
-   // console.log(subjectsArray?.find(filter[0].subcode))
     setSubjectName(filter[0].subName);
   };
 
@@ -300,8 +297,8 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
           <InputBox text={subjectName} />
           <Date />
-          <Button />
-          <Button1 />
+         <RadioButton/>
+          
         </div>
         <div style={{ marginTop: "10px" }}>
           <div
@@ -334,8 +331,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
           <InputBox text={subjectName} />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
         <div style={{ marginTop: "10px" }}>
           {" "}
@@ -369,8 +365,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
           <InputBox text={subjectName} />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
         <div style={{ marginTop: "10px" }}>
           {" "}
@@ -398,8 +393,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
           <InputBox text={subjectName} />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
         <div style={{ marginTop: "10px" }}>
           {" "}
@@ -437,8 +431,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
           <InputBox text={subjectName} />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
         <div
           style={{
@@ -487,8 +480,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
         <div style={{ display: "flex", marginRight: "300px" }}>
           <div style={{ marginTop: "10px" }}>
@@ -530,8 +522,7 @@ export const SubEs = () => {
           <Dropdown0 data={subcode} />
           <InputBox />
           <Date />
-          <Button />
-          <Button1 />
+          <RadioButton/>
         </div>
       </Box>
       <Popup modalOpen={modalOpen} setModalOpen={setModalOpen} />

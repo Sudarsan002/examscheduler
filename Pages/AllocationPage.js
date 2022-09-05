@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { AllocationPageComp } from "../src/Components/AllocationPageComp";
+import { CheckBox } from "../src/Components/Dropdown";
 //import GlobalStyle from "../src/GlobalStyle";
 import Footer from "../src/Layouts/Footer";
 import Header from "../src/Layouts/Header";
+import FilterIcon from "../src/svg/Filter";
 
 const AllocationPage = (props) => {
   // const { subjectDetails } = props;
@@ -73,7 +75,27 @@ const AllocationPage = (props) => {
       <Header />
       <div
         style={{
-          padding: "37px 120px",
+          marginLeft: "1100px",
+          display: "flex",
+          flexDirection: "row",
+          marginBottom: "-3px",
+        }}
+      >
+        <span
+          style={{
+            marginRight: "10px",
+          }}
+        >
+          Show Allocated
+        </span>
+        <CheckBox style={{}} />
+        <span style={{ marginRight: "10px", marginLeft: "10px" }}>Filter</span>
+        <FilterIcon />
+      </div>
+
+      <div
+        style={{
+          padding: "0px 120px",
           display: "flex",
           flexWrap: "wrap",
           gap: 20,
@@ -95,9 +117,8 @@ const AllocationPage = (props) => {
               isCompleted={item?.completed}
               // marginRight={(index + 1) % 3 !== 0 ? "20px" : 0}
               marginTop={51}
-             deletePress={() => onDelete(item, index)}
-            // editPress={()=> }
-
+              deletePress={() => onDelete(item, index)}
+              // editPress={()=> }
             />
           );
         })}

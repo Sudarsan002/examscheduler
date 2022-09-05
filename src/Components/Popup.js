@@ -41,7 +41,7 @@ function Popup(props) {
           <a style={{
           alignItems:"right",
             color: "#5375E2",
-          }} href="http://localhost:3000/LandingPage">Go Home</a>
+          }} href="http://localhost:3000/AllocationPage">Go Home</a>
         </div>
         <div className=" modal-header">
           <h5 className=" " id="exampleModalLabel">

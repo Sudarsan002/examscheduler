@@ -14,7 +14,7 @@ export const AllocationPageComp = (props) => {
     semester = "3",
     subject = "5",
     lab = "2",
-    ExamType = "Semster",
+    ExamType = "Semester",
     isCompleted = false,
     marginRight = 0,
     marginTop = 0,

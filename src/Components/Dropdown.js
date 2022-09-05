@@ -90,13 +90,13 @@ export const Date = () => {
   );
 };
 
-export const CheckBox = () => {
+export const CheckBox = ({ style={
+  marginLeft: "20%",
+  marginTop: "19px",
+}}) => {
   return (
     <div
-      style={{
-        marginLeft: "20%",
-        marginTop: "19px",
-      }}
+     style={{style}}
     >
       <input type="checkbox" name="FN" value="FN" />
     </div>
