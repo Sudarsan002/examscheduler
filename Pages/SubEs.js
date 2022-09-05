@@ -14,9 +14,6 @@ import {
 } from "../src/Components/Dropdown";
 import Popup from "../src/Components/Popup";
 
-
-import Dropdown from "../src/Components/CustomDropdown";
-
 export const SubEs = () => {
   const [branch, setBranch] = useState([
     { name: "select", id: "0" },
@@ -29,7 +26,6 @@ export const SubEs = () => {
     { name: "EEE", id: "1" },
     { name: "ECE", id: "1" },
     { name: "MECH", id: "1" },
-   
   ]);
   const [subcode, setSubcode] = useState([
     "19QSA011",
@@ -38,25 +34,43 @@ export const SubEs = () => {
     "19CTR105",
     "19MNS202",
   ]);
+  const [subjectName, setSubjectName] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+
   const [examtype, setExamType] = useState(["Internal", "Model", "Semester"]);
   const [selectedDept, setSelectedDept] = useState([
     { name: "select", id: "0" },
   ]);
 
+  const subjectsArray = [
+    { subcode: "19QSA011", subName: "Measurement and Instrumentation" },
+    { subcode: "19HSM002", subName: "Electrical Machines" },
+    { subcode: "19ASR008", subName: "Power Systems" },
+    { subcode: "19CTR105", subName: "Microcontrollers" },
+    { subcode: "19MNS202", subName: "Control Systems" },
+  ];
+
   const onChangeSelectBranch = (data) => {
     const selectedValue = data.target.value;
-    setSelectedDept(dept.filter((selectDept) => selectDept.id === selectedValue))
-
-    // if (selectedValue === "B.Tech") {
-    //   setSelectedDept(dept.filter((selectDept) => selectDept.id === "2"));
-    // } else {
-    //   setSelectedDept(dept.filter((selectDept) => selectDept.id === "1"));
-    // }
+    setSelectedDept(
+      dept.filter((selectDept) => selectDept.id === selectedValue)
+    );
   };
 
-  const [modalOpen, setModalOpen] = React.useState(false);
-  // const [popup,setPopup] = useState(["", "", ""]);
-  return (
+  const onChangeSelectCode = (data) => {
+    const selectedValue = data.target.value;
+
+    // const findValue  = subjectsArray.findIndex(selectedValue)
+    // console.log("findValue",findValue)
+    const filter = subjectsArray.filter(
+      (item) => item.subcode === selectedValue
+    );
+    console.log("hello",subjectsArray)
+   // console.log(subjectsArray?.find(filter[0].subcode))
+    setSubjectName(filter[0].subName);
+  };
+
+  return (  
     <>
       <Box
         style={{
@@ -90,8 +104,6 @@ export const SubEs = () => {
               data={branch}
               onChange={onChangeSelectBranch}
             />
-
-           
           </div>
           <div>
             <TextComponent label="Department" />
@@ -148,7 +160,6 @@ export const SubEs = () => {
               <TextComponent label="FN" />
             </div>
           </div>
-
 
           <Time />
           <Time />
@@ -286,8 +297,8 @@ export const SubEs = () => {
             borderRadius: "5px",
           }}
         >
-          <Dropdown0 data={subcode} />
-          <InputBox />
+          <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
+          <InputBox text={subjectName} />
           <Date />
           <Button />
           <Button1 />
@@ -320,8 +331,8 @@ export const SubEs = () => {
             height: "56px",
           }}
         >
-          <Dropdown0 data={subcode} />
-          <InputBox />
+          <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
+          <InputBox text={subjectName} />
           <Date />
           <Button />
           <Button1 />
@@ -355,8 +366,8 @@ export const SubEs = () => {
             height: "56px",
           }}
         >
-          <Dropdown0 data={subcode} />
-          <InputBox />
+          <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
+          <InputBox text={subjectName} />
           <Date />
           <Button />
           <Button1 />
@@ -384,8 +395,8 @@ export const SubEs = () => {
             height: "56px",
           }}
         >
-          <Dropdown0 data={subcode} />
-          <InputBox />
+          <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
+          <InputBox text={subjectName} />
           <Date />
           <Button />
           <Button1 />
@@ -423,8 +434,8 @@ export const SubEs = () => {
             height: "56px",
           }}
         >
-          <Dropdown0 data={subcode} />
-          <InputBox />
+          <Dropdown0 data={subcode} onChange={onChangeSelectCode} />
+          <InputBox text={subjectName} />
           <Date />
           <Button />
           <Button1 />

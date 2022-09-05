@@ -10,7 +10,6 @@ import Link from 'next/link'
  const App = () => {
   return (
     <div>
-       
        <Header/>
        <Image/>
        <Button/>

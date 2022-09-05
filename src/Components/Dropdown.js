@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextComponent from "./TextComponent";
+import { TextComponent1 } from "./TextComponent";
 
 export const Dropdown0 = (props) => {
   const { data, onChange = () => null } = props;
@@ -20,7 +21,7 @@ export const Dropdown0 = (props) => {
           borderRadius: "10px",
           order: "1",
           flexGrow: "0",
-          borderRadius: "5px",
+
           height: "56px",
           marginRight: "20px",
           opacity: "0.5",
@@ -37,24 +38,26 @@ export const Dropdown0 = (props) => {
 };
 
 export const InputBox = (props) => {
+  console.log("props1", props);
   return (
     <div
       style={{
-        paddingLeft: "400px",
+        paddingLeft: "20px",
         marginLeft: "18px",
         marginRight: "18px",
-        background: "#F2F2F2",
+        backgroundColor: "#F2F2F2",
         border: "1px solid #E8E8EA",
         borderRadius: "5px",
-        width: "423px",
+        minWidth: 423,
         height: "56px",
+        paddingTop: "15px",
 
         flexDirection:
           props.type === "text" || props.type === "number" ? "column" : "row",
       }}
     >
-      <TextComponent
-        label={props.label}
+      <TextComponent1
+        label={props.text}
         CustomTag={
           props.type === "text" || props.type === "number" ? "div" : "span"
         }
@@ -81,10 +84,6 @@ export const Date = () => {
           height: "56px",
           borderRadius: "4px",
           opacity: "0.5",
-
-          //   paddingLeft: "10px",
-          //   padding:10
-          //   backgroundColor:'red',
         }}
       />
     </div>
@@ -124,7 +123,7 @@ export const Button = () => {
       <div
         style={{
           padding: "19px",
-          width: "15px",
+          width: "56px",
         }}
         onClick={handleClick}
       >
@@ -154,7 +153,7 @@ export const Button1 = () => {
       <div
         style={{
           padding: "19px",
-          width: "15px",
+          width: "56px",
         }}
         onClick={handleClick}
       >
@@ -178,12 +177,6 @@ export const Time = () => {
           height: "56px",
           borderRadius: "5px",
           opacity: "0.5",
-
-          //           height: 56px;
-          // width: 68.52857208251953px;
-          // left: 0px;
-          // top: 0px;
-          // border-radius: 5px;
         }}
       />
     </div>
@@ -192,20 +185,20 @@ export const Time = () => {
 
 export const Time1 = () => {
   return (
-    <div >
-    
-    <select style={{
-      background: "#FFFFFF",
-      border: "1px solid #E5E5E5",
-      width: "68.5px",
-      height: "56px",
-      borderRadius: "5px",
-      opacity: "0.5",
-    }}>
- 
- <option value="two">AM</option>
- <option value="three">PM</option>
-</select>
+    <div>
+      <select
+        style={{
+          background: "#FFFFFF",
+          border: "1px solid #E5E5E5",
+          width: "68.5px",
+          height: "56px",
+          borderRadius: "5px",
+          opacity: "0.5",
+        }}
+      >
+        <option value="two">AM</option>
+        <option value="three">PM</option>
+      </select>
     </div>
   );
 };
@@ -223,133 +216,117 @@ export const InputBox1 = (props) => {
             width: "340px",
             height: "55px",
           }}
+          value={props.text}
         />
       </div>
     </div>
   );
 };
 
-export const DotBox = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "392px",
-        height: "252px",
-        left: "102px",
-        top: "175px",
-        background: "#F6F6F6",
-        border: "1px dashed #000000",
-        borderRadius: "10px",
-        margin: "79px 30px 57px 102px",
-      }}
-    >
-      <ButtonComponent1 />
-    </div>
-  );
-};
+// export const DotBox = () => {
+//   return (
+//     <div
+//       style={{
+//         boxSizing: " border-box",
+//         width: "392px",
+//         height: "252px",
+//         left: "102px",
+//         top: "175px",
+//         background: "#F6F6F6",
+//         border: "1px dashed #000000",
+//         borderRadius: "10px",
+//         margin: "79px 30px 57px 102px",
+//       }}
+//     >
+//       <ButtonComponent1 />
+//     </div>
+//   );
+// };
 
-export const Box1 = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "392px",
-        height: "252px",
-        left: "524px",
-        top: "176px",
-        border: "1px solid #FFA500",
-        borderRadius: "10px",
-        margin: "79px 30px 57px 30px",
-      }}
-    >
-      <InnerBorder />
-    </div>
-  );
-};
-export const Box2 = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "392px",
-        height: "252px",
-        left: "524px",
-        top: "176px",
-        border: "1px solid #5375E2",
-        borderRadius: "10px",
-        margin: "79px 102px 56px 30px",
-      }}
-    >
-      <InnerBorder1 />
-    </div>
-  );
-};
-export const Box3 = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "382px",
-        height: "252px",
-        left: "524px",
-        top: "176px",
-        border: "1px solid #5375E2",
-        borderRadius: "10px",
-        margin: "25px 30px 57px  92px",
-      }}
-    >
-      <InnerBorder1 />
-    </div>
-  );
-};
+// export const Box1 = () => {
+//   return (
+//     <div
+//       style={{
+//         boxSizing: " border-box",
+//         width: "392px",
+//         height: "252px",
+//         left: "524px",
+//         top: "176px",
+//         border: "1px solid #FFA500",
+//         borderRadius: "10px",
+//         margin: "79px 30px 57px 30px",
+//       }}
+//     >
+//       <InnerBorder />
+//     </div>
+//   );
+// };
+// export const Box2 = () => {
+//   return (
+//     <div
+//       style={{
+//         boxSizing: " border-box",
+//         width: "392px",
+//         height: "252px",
+//         left: "524px",
+//         top: "176px",
+//         border: "1px solid #5375E2",
+//         borderRadius: "10px",
+//         margin: "79px 102px 56px 30px",
+//       }}
+//     >
+//       <InnerBorder1 />
+//     </div>
+//   );
+// };
+// export const Box3 = () => {
+//   return (
+//     <div
+//       style={{
+//         boxSizing: " border-box",
+//         width: "382px",
+//         height: "252px",
+//         left: "524px",
+//         top: "176px",
+//         border: "1px solid #5375E2",
+//         borderRadius: "10px",
+//         margin: "25px 30px 57px  92px",
+//       }}
+//     >
+//       <InnerBorder1 />
+//     </div>
+//   );
+// };
 
-export const Box4 = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "392px",
-        height: "252px",
-        left: "524px",
-        top: "176px",
-        border: "1px solid #FFA500",
-        borderRadius: "10px",
-        margin: "25px 30px 57px 30px",
-      }}
-    >
-      <InnerBorder />
-    </div>
-  );
-};
-export const Box5 = () => {
-  return (
-    <div
-      style={{
-        boxSizing: " border-box",
-        width: "392px",
-        height: "252px",
-        left: "524px",
-        top: "176px",
-        border: "1px solid #FFA500",
-        borderRadius: "10px",
-        margin: "25px 92px 57px 30px",
-      }}
-    >
-      <InnerBorder />
-    </div>
-  );
-};
+// export const Box4 = () => {
+//   return (
+//     <div
+//       style={{
+//         boxSizing: " border-box",
+//         width: "392px",
+//         height: "252px",
+//         left: "524px",
+//         top: "176px",
+//         border: "1px solid #FFA500",
+//         borderRadius: "10px",
+//         margin: "25px 30px 57px 30px",
+//       }}
+//     >
+//       <InnerBorder />
+//     </div>
+//   );
+// };
+
 export const ButtonComponent1 = (props) => {
-  const { type } = props;
+  const { type, marginTop = 90, marginLeft = 90 } = props;
   return (
     <div>
       <div>
         <button
           type={type}
           style={{
-            marginLeft: "85px",
-            marginTop: "90px",
+            marginTop,
+            marginLeft,
             backgroundColor: "#5375e2",
             borderRadius: "10px",
             borderColor: "white",
@@ -366,61 +343,60 @@ export const ButtonComponent1 = (props) => {
   );
 };
 
-export const InnerBorder = () => {
-  return (
-    <div
-      style={{
-        width: "380px",
-        height: "56px",
-        left: "102px",
-        top: "680px",
-        background: "#FFA500",
-        borderRadius: "10px",
-        marginTop: "195px",
-      }}
-    >
-      <TextComponent
-        label="Not Allocated"
-        styleProps={{
-          fontStyle: "normal",
-          fontWeight: "700",
-          fontSize: "20px",
-          lineHeight: "27px",
-          color: "#FFFFFF",
-          padding: "12px 34px",
-        }}
-      />
-    </div>
-  );
-};
-export const InnerBorder1 = () => {
-  return (
-    <div
-      style={{
-        width: "380px",
-        height: "56px",
-        left: "102px",
-        top: "680px",
-        background: "#5375E2",
-        borderRadius: "10px",
-        marginTop: "195px",
-      }}
-    >
-      <TextComponent
-        label="Allocated"
-        styleProps={{
-          width: "96px",
-          height: "27px",
-          left: "986px",
-          top: "385px",
-          fontStyle: "normal",
-          fontWeight: "700",
-          fontSize: "20px",
-          lineHeight: "27px",
-          color: "#FFFFFF",
-          // padding:"12px 34px"
-        }}
-      />
-    </div>
-  );
-};
+// export const InnerBorder = () => {
+//   return (
+
+//     <div
+//       style={{
+//         width: "380px",
+//         height: "56px",
+//         background: "#FFA500",
+//         borderRadius: "10px",
+//         marginTop: "195px",
+//       }}
+//     >
+//       <TextComponent
+//         label="Not Allocated"
+//         styleProps={{
+//           fontStyle: "normal",
+//           fontWeight: "700",
+//           fontSize: "20px",
+//           lineHeight: "27px",
+//           color: "#FFFFFF",
+//           padding: "12px 34px",
+//         }}
+//       />
+//     </div>
+//   );
+// };
+// export const xInnerBorder1 = () => {
+//   return (
+//     <div
+//       style={{
+//         width: "380px",
+//         height: "56px",
+//         left: "102px",
+//         top: "680px",
+//         background: "#5375E2",
+//         borderRadius: "10px",
+//         marginTop: "195px",
+//       }}
+//     >
+//       <TextComponent
+//         label="Allocated"
+//         styleProps={{
+//           width: "96px",
+//           height: "27px",
+//           left: "986px",
+//           top: "385px",
+//           fontStyle: "normal",
+//           fontWeight: "700",
+//           fontSize: "20px",
+//           lineHeight: "27px",
+//           color: "#FFFFFF",
+//           // padding:"12px 34px"
+//         }}
+//       />
+//     </div>
+//   );
+// };
